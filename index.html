@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ScriptWeather</title>
+</head>
+<body>
+    <div class="weather">
+        <h1>ScriptWeather</h1>
+        <div class="content">
+            <div class="item location">
+                <form onsubmit="displayWeather();return false">
+                    <input type="text" id='searchPlace' placeholder="Search for a location..." value="">
+                </form>
+                <p id="display-location"></p>
+            </div>
+            <div class="item date">
+                <p id="display-date"></p>
+            </div>
+            <div class="item time">
+                <p id="display-time"></p>
+            </div>
+            <div class="item picture">
+                <img src='' id="display-icon"></span>
+            </div>
+            <div class="item temperature">
+                <p id="display-temp"></p>
+            </div>
+            <div class="item description">
+                <p id="display-description"></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
