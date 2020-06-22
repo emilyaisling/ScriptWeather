@@ -4,13 +4,18 @@ let api = {
     units: '&units=metric',
     location: ''
 }
+
 let timer = window.setInterval(displayTime, 1000);
+window.onload(displayDate());
 let refresh = window.setInterval(displayWeather, 1000);
+
 
 async function displayWeather() 
 {
     api.location = document.getElementById('searchPlace').value;
     let mainList = ['Clouds', 'Clear', 'Mist', 'Fog', 'Snow', 'Rain', 'Drizzle', 'Thunderstorm'];
+
+
     let result = await fetch(api.urlstart + api.location + api.units + api.key);
     
     let data = await result.json();
@@ -53,9 +58,10 @@ async function displayWeather()
 
     document.getElementById('display-location').innerHTML = data.name + ', ' + data.sys.country;
     document.getElementById('display-temp').innerHTML = data.main.temp + '°C';
-    document.getElementById('display-description').innerHTML = data.weather[0].description;
+    document.getElementById('display-description').innerHTML = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1).toLowerCase()
     document.getElementById('display-icon').src = icon;
 }
+
 
 function displayTime()
 {
@@ -90,4 +96,4 @@ function displayDate()
     let year = today.getFullYear();
     document.getElementById('display-date').innerHTML = days[day] + ' ' + date + ' ' + months[month] + ' ' + year;
 }
-window.onload(displayDate());
+

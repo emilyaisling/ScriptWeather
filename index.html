@@ -3,16 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <title>ScriptWeather</title>
 </head>
 <body>
-    <div class="weather">
+    <div id="weather">
         <h1>ScriptWeather</h1>
         <div class="content">
-            <div class="item location">
+            <div class="item search">
                 <form onsubmit="displayWeather();return false">
                     <input type="text" id='searchPlace' placeholder="Search for a location..." value="">
                 </form>
+            </div>
+            <div class="item location">
                 <p id="display-location"></p>
             </div>
             <div class="item date">
@@ -22,7 +25,7 @@
                 <p id="display-time"></p>
             </div>
             <div class="item picture">
-                <img src='' id="display-icon"></span>
+                <img src='' id="display-icon">
             </div>
             <div class="item temperature">
                 <p id="display-temp"></p>
@@ -32,7 +35,46 @@
             </div>
         </div>
     </div>
-    
+  
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        let themeChange = function(){
+            let d = new Date();
+            let h = d.getHours();
+            if (h <= 10)
+            {
+                url = 'morning.jpeg';
+                bgColour = 'rgb(165, 96, 96)';
+                inputBG = 'rgb(255, 208, 208)';
+                borderBG = 'rgb(128, 44, 44)';
+            }
+            else if(h <= 17)
+            {
+                url = 'midday.jpg';
+                bgColour = 'rgb(40, 90, 131)';
+                inputBG = 'rgb(150, 185, 214)';
+                borderBG = 'rgb(10, 49, 80)';
+                $('p').css("color", 'rgb(0, 35, 80)');
+            }
+            else if(h <= 20)
+            {
+                url = 'sunset.jpeg';
+                bgColour = 'rgb(179, 121, 83)';
+                inputBG = 'rgb(241, 195, 163)';
+                borderBG = 'rgb(139, 67, 19)';
+            }
+            else if(h <= 23 || h < 6)
+            {
+                url = 'stars.jpg';
+                bgColour = 'rgb(21, 15, 58)';
+            }
+
+            $('#weather').css("background-image", "url(" + url + ")");
+            $('body').css("background-color", bgColour);
+            $('input').css({"background-color": inputBG, 'border-color': borderBG});
+        };
+        setInterval(themeChange, 1000);
+    </script>
 </body>
 </html>

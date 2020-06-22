@@ -1,25 +1,21 @@
 *{
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-body{
-    background-color: rgb(15, 15, 58);
-}
-.weather{
+#weather{
     width: 400px;
-    background-color: rgb(0, 88, 170);
     box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
     margin: 100px auto;
     border-radius: 25px;
-    background: url(stars.jpg);
     background-size: cover;
 }
-.weather h1{
+#weather h1{
     text-align: center;
-    color: whitesmoke;
+    color: rgb(248, 248, 255);
     font-size: 24px;
     padding: 20px 0 20px 0;
 }
@@ -29,20 +25,31 @@ body{
     justify-content: center;
     padding-top: 20px;
 }
-.weather .content .item{
+#weather .content .item{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
-    width: 310px;
+    color: rgb(248, 248, 255);
+    width: 250px;
     height: 50px;
-    margin-bottom: 20px;
-    padding: 0 15px;
+    margin-bottom: 20px;  
 }
-.weather .content img{
+#weather .content img{
     width: 150px;
 }
-.weather .content .location{
-    padding-bottom: 80px;
+#weather .content .search input{
+    padding: 5px;
+    border: 3px inset rgb(15, 15, 58);
+    border-radius: 15px;
+    background-color: rgb(206, 206, 255); 
+}
+#weather .content .search input:focus{
+    outline: none;
+    border: 3px inset rgb(70, 70, 243);
+}
+#weather .content .search input::placeholder{
+    color: rgb(92, 92, 129);
+    font-size: 16px;
+    font-weight: 400;
 }
