@@ -1,6 +1,6 @@
 let api = {
     key: '&appid=9f4d4fab1c6ea5975b142626ba7055fa',
-    urlstart: 'http://api.openweathermap.org/data/2.5/weather?q=',
+    urlstart: 'https://api.openweathermap.org/data/2.5/weather?q=',
     units: '&units=metric',
     location: ''
 }
