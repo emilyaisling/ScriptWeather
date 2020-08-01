@@ -1,3 +1,4 @@
+//api connection information
 let api = {
     key: '&appid=9f4d4fab1c6ea5975b142626ba7055fa',
     urlstart: 'https://api.openweathermap.org/data/2.5/weather?q=',
@@ -5,6 +6,7 @@ let api = {
     location: ''
 }
 
+//page initialisation
 let timer = window.setInterval(displayTime, 1000);
 window.onload(displayDate());
 let refresh = window.setInterval(displayWeather, 1000);
@@ -15,10 +17,11 @@ async function displayWeather()
     api.location = document.getElementById('searchPlace').value;
     let mainList = ['Clouds', 'Clear', 'Mist', 'Fog', 'Snow', 'Rain', 'Drizzle', 'Thunderstorm'];
 
-
     let result = await fetch(api.urlstart + api.location + api.units + api.key);
     
     let data = await result.json();
+
+    //icon selection to match weather description
     if (data.weather[0].main == mainList[0] && data.weather[0].description == 'overcast clouds' || data.weather[0].description == 'broken clouds') 
     {
         icon = 'icons/cloudy.png';
@@ -56,6 +59,7 @@ async function displayWeather()
         icon = 'icons/night.png';
     }
 
+    //setting weather values to display on page
     document.getElementById('display-location').innerHTML = data.name + ', ' + data.sys.country;
     document.getElementById('display-temp').innerHTML = data.main.temp + '°C';
     document.getElementById('display-description').innerHTML = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1).toLowerCase()
